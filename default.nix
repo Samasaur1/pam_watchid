@@ -1,4 +1,4 @@
-{ lib, swiftPackages, swift, swiftpm, swiftpm2nix, ... }:
+{ lib, swiftPackages, swift, swiftpm, swiftpm2nix, apple-sdk_10_15, ... }:
 
 let
   # Pass the generated files to the helper.
@@ -15,6 +15,8 @@ swiftPackages.stdenv.mkDerivation {
   # This by default performs a release build using SwiftPM, essentially:
   #   swift build -c release
   nativeBuildInputs = [ swift swiftpm ];
+
+  buildInputs = [ apple-sdk_10_15 ];
 
   # The helper provides a configure snippet that will prepare all dependencies
   # in the correct place, where SwiftPM expects them.
